@@ -16,7 +16,7 @@ public void ConfigureServices(IServiceCollection services)
             .AddClientCertificateCheck("MyFriendlyCertCheckName", "MyCertThumbprint"); // using Skandia.Extensions.Diagnostics.HealthChecks.Certificate
         ...
     }
-
+```
 
 
 ## Configuration
