@@ -13,7 +13,7 @@ public void ConfigureServices(IServiceCollection services)
         ...
         services
             .AddHealthChecks() // using Microsoft.AspNetCore.Diagnostics.HealthChecks
-            .AddClientCertificateCheck("MyFriendlyCertCheckName", "MyCertThumbprint"); // using Skandia.Extensions.Diagnostics.HealthChecks.Certificate
+            .AddClientCertificateCheck("MyFriendlyCertCheckName", "MyCertThumbprint"); // using Skandia.AspNetCore.HealthChecks.Certificate
         ...
     }
 ```
