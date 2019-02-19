@@ -1,10 +1,10 @@
-# Skandia.Extensions.Diagnostics.HealthChecks.Certificate
+# Skandia.AspNetCore.HealthChecks.Certificate
 This is a module for Microsoft.Extensions.Diagnostics.HealthChecks that allows you to do a check regarding your client certificates via thumbprint.
 
 ## Getting Started
-Install the nuget package Skandia.Extensions.Diagnostics.HealthChecks.Certificate
+Install the nuget package Skandia.AspNetCore.HealthChecks.Certificate
 ```
-Install-Package Skandia.Extensions.Diagnostics.HealthChecks.Certificate
+Install-Package Skandia.AspNetCore.HealthChecks.Certificate
 ```
 Then in your Startup.cs, simply add your certificate check as well.
 ``` csharp
