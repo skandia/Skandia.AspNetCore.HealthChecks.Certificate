@@ -1,13 +1,17 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>
-      Components for performing health checks with Client certificates.
-    </Description>
+    <Description>Skandia.AspNetCore.HealthChecks.Certificate is the health check package for Client certificates.
+</Description>
     <TargetFramework>netstandard2.0</TargetFramework>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageTags>diagnostics;healthchecks;certificates</PackageTags>
+    <Authors>Skandia Contributors</Authors>
+    <Product />
+    <Company />
+    <RepositoryUrl>https://github.com/skandia/Skandia.AspNetCore.HealthChecks.Certificate</RepositoryUrl>
+    <PackageLicenseUrl>https://github.com/skandia/Skandia.AspNetCore.HealthChecks.Certificate/blob/master/LICENSE.txt</PackageLicenseUrl>
   </PropertyGroup>
 
   <ItemGroup>
