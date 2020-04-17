@@ -28,6 +28,7 @@ services.AddHealthChecks()
     storeName: StoreName.My,
     storeLocation: StoreLocation.LocalMachine,
     validOnly: true,
+    treatEmptyThumbprintAsOk: true,
     failureStatus: HealthStatus.Unhealthy,
     tags: null
 );
