@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
@@ -60,7 +61,7 @@ namespace Demo.Web
                         new JProperty("data", new JObject(pair.Value.Data.Select(
                             p => new JProperty(p.Key, p.Value))))))))));
             return httpContext.Response.WriteAsync(
-                json.ToString(Formatting.Indented));
+                json.ToString(Newtonsoft.Json.Formatting.Indented));
         }
     }
 }

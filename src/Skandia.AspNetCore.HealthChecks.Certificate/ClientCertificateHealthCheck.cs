@@ -20,8 +20,7 @@ namespace Skandia.AspNetCore.HealthChecks.Certificate
         {
             var options = _options.Get(context.Registration.Name);
 
-            return await ClientCertificateHelper.ValidateCertificate(options.Thumbprint, options.StoreName,
-                options.StoreLocation, options.MustHavePrivateKey, options.ValidOnly, context.Registration.FailureStatus);
+            return await ClientCertificateHelper.ValidateCertificate(options, context.Registration.FailureStatus);
         }
     }
 }

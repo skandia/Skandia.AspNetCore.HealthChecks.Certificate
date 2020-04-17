@@ -16,7 +16,8 @@ namespace Skandia.AspNetCore.HealthChecks.Certificate
             StoreLocation storeLocation = StoreLocation.LocalMachine,
             bool validOnly = true,
             HealthStatus? failureStatus = HealthStatus.Unhealthy,
-            IEnumerable<string> tags = null
+            IEnumerable<string> tags = null,
+            bool treatEmptyThumbprintAsOk = true
             )
         {
             // Register a check of type GCInfo
@@ -30,6 +31,7 @@ namespace Skandia.AspNetCore.HealthChecks.Certificate
                     options.StoreName = storeName;
                     options.StoreLocation = storeLocation;
                     options.ValidOnly = validOnly;
+                    options.TreatEmptyThumbprintAsOk = treatEmptyThumbprintAsOk;
                 });
             
 

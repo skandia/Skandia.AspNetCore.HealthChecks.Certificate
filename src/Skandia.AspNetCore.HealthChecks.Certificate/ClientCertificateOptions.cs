@@ -9,5 +9,6 @@ namespace Skandia.AspNetCore.HealthChecks.Certificate
         public StoreName StoreName;
         public StoreLocation StoreLocation;
         public bool ValidOnly;
+        public bool TreatEmptyThumbprintAsOk;
     }
 }
