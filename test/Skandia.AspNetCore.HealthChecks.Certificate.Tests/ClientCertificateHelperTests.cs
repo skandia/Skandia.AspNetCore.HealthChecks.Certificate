@@ -15,11 +15,17 @@ namespace Skandia.AspNetCore.HealthChecks.Certificate.Tests
             var anExistingCertFound = thumbprint != null;
             Assert.True(anExistingCertFound,
                 "No existing suitable cert found in store for this test (add or rewrite test needed...)");
-            
+            var options = new ClientCertificateOptions
+            {
+                Thumbprint = thumbprint,
+                StoreLocation = StoreLocation.LocalMachine,
+                StoreName = StoreName.My,
+                MustHavePrivateKey = false,
+                ValidOnly = true
+            };
 
-                // Act
-                var result = await ClientCertificateHelper.ValidateCertificate(thumbprint, StoreName.My, StoreLocation.LocalMachine,
-                    false, true, HealthStatus.Unhealthy);
+            // Act
+            var result = await ClientCertificateHelper.ValidateCertificate(options, HealthStatus.Unhealthy);
 
             // Assert
             Assert.Equal(HealthStatus.Healthy, result.Status);
@@ -36,10 +42,17 @@ namespace Skandia.AspNetCore.HealthChecks.Certificate.Tests
             Assert.True(anExistingCertFound,
                 "No existing suitable cert found in store for this test (add or rewrite test needed...)");
 
+            var options = new ClientCertificateOptions
+            {
+                Thumbprint = thumbprint,
+                StoreLocation = StoreLocation.LocalMachine,
+                StoreName = StoreName.My,
+                MustHavePrivateKey = true,
+                ValidOnly = true
+            };
 
             // Act
-            var result = await ClientCertificateHelper.ValidateCertificate(thumbprint, StoreName.My, StoreLocation.LocalMachine,
-                true, true, HealthStatus.Unhealthy);
+            var result = await ClientCertificateHelper.ValidateCertificate(options, HealthStatus.Unhealthy);
 
             // Assert
             Assert.Equal(HealthStatus.Healthy, result.Status);
@@ -51,10 +64,17 @@ namespace Skandia.AspNetCore.HealthChecks.Certificate.Tests
         {
             // Arrange
             var thumbprint = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            var options = new ClientCertificateOptions
+            {
+                Thumbprint = thumbprint,
+                StoreLocation = StoreLocation.LocalMachine,
+                StoreName = StoreName.My,
+                MustHavePrivateKey = true,
+                ValidOnly = true
+            };
 
             // Act
-            var result = await ClientCertificateHelper.ValidateCertificate(thumbprint, StoreName.My, StoreLocation.LocalMachine,
-                false, true, HealthStatus.Unhealthy);
+            var result = await ClientCertificateHelper.ValidateCertificate(options, HealthStatus.Unhealthy);
 
             // Assert
             Assert.Equal(HealthStatus.Unhealthy, result.Status);
@@ -71,9 +91,17 @@ namespace Skandia.AspNetCore.HealthChecks.Certificate.Tests
             Assert.True(anExistingCertFound,
                 "No existing suitable cert found in store for this test (add or rewrite test needed...)");
 
+            var options = new ClientCertificateOptions
+            {
+                Thumbprint = thumbprint,
+                StoreLocation = StoreLocation.LocalMachine,
+                StoreName = StoreName.My,
+                MustHavePrivateKey = true,
+                ValidOnly = true
+            };
+
             // Act
-            var result = await ClientCertificateHelper.ValidateCertificate(thumbprint, StoreName.My, StoreLocation.LocalMachine,
-                true, true, HealthStatus.Unhealthy);
+            var result = await ClientCertificateHelper.ValidateCertificate(options, HealthStatus.Unhealthy);
 
             // Assert
             Assert.Equal(HealthStatus.Unhealthy, result.Status);
@@ -94,8 +122,9 @@ namespace Skandia.AspNetCore.HealthChecks.Certificate.Tests
                         continue;
                     }
 
+                   
                     if (!mustHavePrivateKey && certificate.HasPrivateKey)
-                    {
+                    { 
                         continue;
                     }
 
